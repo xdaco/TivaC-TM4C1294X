@@ -32,13 +32,13 @@
 //*************** Setting UART7 as debug Port*********************************//
 void InitConsole(void){
 
-		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC);
-	    GPIOPinConfigure(GPIO_PC4_U7RX);
-	    GPIOPinConfigure(GPIO_PC5_U7TX);
-	    SysCtlPeripheralEnable(SYSCTL_PERIPH_UART7);
-	    UARTClockSourceSet(UART7_BASE, UART_CLOCK_PIOSC);
-	    GPIOPinTypeUART(GPIO_PORTC_BASE, GPIO_PIN_4 | GPIO_PIN_5);
-	    UARTStdioConfig(7, 115200, 16000000);
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC); //Enables the PORT C
+	    GPIOPinConfigure(GPIO_PC4_U7RX); // Setting the Rx pin
+	    GPIOPinConfigure(GPIO_PC5_U7TX); // Setting the Tx pin
+	    SysCtlPeripheralEnable(SYSCTL_PERIPH_UART7); //Enables UART7
+	    UARTClockSourceSet(UART7_BASE, UART_CLOCK_PIOSC); // Sets clock source
+	    GPIOPinTypeUART(GPIO_PORTC_BASE, GPIO_PIN_4 | GPIO_PIN_5); // Setting UART PIN direction
+	    UARTStdioConfig(7, 115200, 16000000); //Setting baud rate
 }
 
 //*************** Setting UART7 as debug Port Ends here*********************************//
@@ -64,26 +64,26 @@ int main(){
     while(1){
 
     	UARTprintf("Making PF1,PF2,PF3,PH1,PH2,PM1,PL4 and PL5 high\n");
-    	GPIOPinWrite(GPIO_PORTF_AHB_BASE,GPIO_PIN_1, GPIO_PIN_1);
-    	GPIOPinWrite(GPIO_PORTF_AHB_BASE,GPIO_PIN_2, GPIO_PIN_2);
-    	GPIOPinWrite(GPIO_PORTF_AHB_BASE,GPIO_PIN_3, GPIO_PIN_3);
-    	GPIOPinWrite(GPIO_PORTH_AHB_BASE,GPIO_PIN_1, GPIO_PIN_1);
-    	GPIOPinWrite(GPIO_PORTH_AHB_BASE,GPIO_PIN_2, GPIO_PIN_2);
-    	GPIOPinWrite(GPIO_PORTM_BASE, GPIO_PIN_1, GPIO_PIN_1);
-    	GPIOPinWrite(GPIO_PORTL_BASE, GPIO_PIN_4, GPIO_PIN_4);
-    	GPIOPinWrite(GPIO_PORTL_BASE, GPIO_PIN_5, GPIO_PIN_5);
+    	GPIOPinWrite(GPIO_PORTF_AHB_BASE,GPIO_PIN_1, GPIO_PIN_1); //Making PF1 High
+    	GPIOPinWrite(GPIO_PORTF_AHB_BASE,GPIO_PIN_2, GPIO_PIN_2); //Making PF2 High
+    	GPIOPinWrite(GPIO_PORTF_AHB_BASE,GPIO_PIN_3, GPIO_PIN_3); //Making PF3 High
+    	GPIOPinWrite(GPIO_PORTH_AHB_BASE,GPIO_PIN_1, GPIO_PIN_1); //Making PH1 High
+    	GPIOPinWrite(GPIO_PORTH_AHB_BASE,GPIO_PIN_2, GPIO_PIN_2); //Making PH2 High
+    	GPIOPinWrite(GPIO_PORTM_BASE, GPIO_PIN_1, GPIO_PIN_1); //Making PM1 High
+    	GPIOPinWrite(GPIO_PORTL_BASE, GPIO_PIN_4, GPIO_PIN_4); //Making PL4 High
+    	GPIOPinWrite(GPIO_PORTL_BASE, GPIO_PIN_5, GPIO_PIN_5); //Making PL5 High
 
     	SysCtlDelay((16000000*3) / 3); // 3 second delay
 
     	UARTprintf("Making PF1,PF2,PF3,PH1,PH2,PM1,PL4 and PL5 Low\n");
-    	GPIOPinWrite(GPIO_PORTF_AHB_BASE,GPIO_PIN_1, ~GPIO_PIN_1);
-    	GPIOPinWrite(GPIO_PORTF_AHB_BASE,GPIO_PIN_2, ~GPIO_PIN_2);
-    	GPIOPinWrite(GPIO_PORTF_AHB_BASE,GPIO_PIN_3, ~GPIO_PIN_3);
-    	GPIOPinWrite(GPIO_PORTH_AHB_BASE,GPIO_PIN_1, ~GPIO_PIN_1);
-    	GPIOPinWrite(GPIO_PORTH_AHB_BASE,GPIO_PIN_2, ~GPIO_PIN_2);
-    	GPIOPinWrite(GPIO_PORTM_BASE, GPIO_PIN_1, ~GPIO_PIN_1);
-    	GPIOPinWrite(GPIO_PORTL_BASE, GPIO_PIN_4, ~GPIO_PIN_4);
-    	GPIOPinWrite(GPIO_PORTL_BASE, GPIO_PIN_5, ~GPIO_PIN_5);
+    	GPIOPinWrite(GPIO_PORTF_AHB_BASE,GPIO_PIN_1, ~GPIO_PIN_1); //Making PF1 Low
+    	GPIOPinWrite(GPIO_PORTF_AHB_BASE,GPIO_PIN_2, ~GPIO_PIN_2); //Making PF2 Low
+    	GPIOPinWrite(GPIO_PORTF_AHB_BASE,GPIO_PIN_3, ~GPIO_PIN_3); //Making PF3 Low
+    	GPIOPinWrite(GPIO_PORTH_AHB_BASE,GPIO_PIN_1, ~GPIO_PIN_1); //Making PH1 Low
+    	GPIOPinWrite(GPIO_PORTH_AHB_BASE,GPIO_PIN_2, ~GPIO_PIN_2); //Making PH2 Low
+    	GPIOPinWrite(GPIO_PORTM_BASE, GPIO_PIN_1, ~GPIO_PIN_1); //Making PM1 Low
+    	GPIOPinWrite(GPIO_PORTL_BASE, GPIO_PIN_4, ~GPIO_PIN_4); //Making PL4 Low
+    	GPIOPinWrite(GPIO_PORTL_BASE, GPIO_PIN_5, ~GPIO_PIN_5); //Making PL5 Low
 
     	SysCtlDelay((16000000*3) / 3); // 3 second delay
 
