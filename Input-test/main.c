@@ -50,6 +50,8 @@ int main(){
 		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE); // Enables PORT E
 		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOP); // Enables PORT P
 		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOQ); // Enables PORT Q
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOM); // Enables PORT M
+		GPIOPinTypeGPIOOutput(GPIO_PORTM_BASE, 0x02); // PM1 is set as output
 		GPIOPinTypeGPIOInput(GPIO_PORTB_BASE,  GPIO_PIN_2); // PB2 is set as input. By this method you can assign one pin at a time
 		GPIOPinTypeGPIOInput(GPIO_PORTE_BASE, 0x01); //PE0 set as Input
 		GPIOPinTypeGPIOInput(GPIO_PORTQ_BASE, 0x1F); //PQ0,PQ1,PQ2,PQ3,PQ4 are set as Input
@@ -57,7 +59,12 @@ int main(){
 		InitConsole(); // Calls the UART debug config funtion
 		UARTprintf("Input tests for TM4C1294X\n"); // General print for the code information.
 
+//Infinite loop starts here // you can also use for loop in thefollowing mannaer.//
 
+//		for (; ; )
+//		{
+		    // ...your code goes here
+//		}
     while(1){
 
     	uint32_t PB2_STATE =  GPIOPinRead(GPIO_PORTB_BASE,GPIO_PIN_2);
@@ -71,11 +78,13 @@ int main(){
     	//Wait for a button press
     	do{
     		PB2_STATE =  GPIOPinRead(GPIO_PORTB_BASE,GPIO_PIN_2);
+    		UARTprintf("PB2 is high\n");
     	  } while ((PB2_STATE&GPIO_PIN_2)!=0);
 
     	//Wait for the button to be let go
     	do{
     		PB2_STATE =  GPIOPinRead(GPIO_PORTB_BASE,GPIO_PIN_2);
+    		UARTprintf("PB2 is low\n");
     	  } while ((PB2_STATE&GPIO_PIN_2)==0);
 
 
