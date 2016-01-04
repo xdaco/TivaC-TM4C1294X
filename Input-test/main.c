@@ -67,25 +67,51 @@ int main(){
 //		}
     while(1){
 
-    	uint32_t PB2_STATE =  GPIOPinRead(GPIO_PORTB_BASE,GPIO_PIN_2);
-    	uint32_t PE0_STATE =  GPIOPinRead(GPIO_PORTE_BASE,GPIO_PIN_0);
-    	uint32_t PP3_STATE =  GPIOPinRead(GPIO_PORTP_BASE,GPIO_PIN_3);
-    	uint32_t PQ0_STATE =  GPIOPinRead(GPIO_PORTQ_BASE,GPIO_PIN_0);
-    	uint32_t PQ1_STATE =  GPIOPinRead(GPIO_PORTQ_BASE,GPIO_PIN_1);
-    	uint32_t PQ2_STATE =  GPIOPinRead(GPIO_PORTQ_BASE,GPIO_PIN_2);
-    	uint32_t PQ3_STATE =  GPIOPinRead(GPIO_PORTQ_BASE,GPIO_PIN_3);
-    	uint32_t PQ4_STATE =  GPIOPinRead(GPIO_PORTQ_BASE,GPIO_PIN_4);
-    	//Wait for a button press
-    	do{
-    		PB2_STATE =  GPIOPinRead(GPIO_PORTB_BASE,GPIO_PIN_2);
-    		UARTprintf("PB2 is high\n");
-    	  } while ((PB2_STATE&GPIO_PIN_2)!=0);
+    	uint32_t PB2_STATE =  0;
+    	uint32_t PE0_STATE =  0;
+    	uint32_t PP3_STATE =  0;
+    	uint32_t PQ0_STATE =  0;
+    	uint32_t PQ1_STATE =  0;
+    	uint32_t PQ2_STATE =  0;
+    	uint32_t PQ3_STATE =  0;
+    	uint32_t PQ4_STATE =  0;
 
-    	//Wait for the button to be let go
-    	do{
-    		PB2_STATE =  GPIOPinRead(GPIO_PORTB_BASE,GPIO_PIN_2);
-    		UARTprintf("PB2 is low\n");
-    	  } while ((PB2_STATE&GPIO_PIN_2)==0);
+    	if (GPIOPinRead(GPIO_PORTB_BASE,GPIO_PIN_2)) // monitoring for Input status change for PB2
+    	{
+    		PB2_STATE =  1;
+    	}
+
+    	if (GPIOPinRead(GPIO_PORTE_BASE,GPIO_PIN_0))// monitoring for Input status change for PE0
+    	{
+    		PE0_STATE =  1;
+    	}
+    	if (GPIOPinRead(GPIO_PORTP_BASE,GPIO_PIN_3))// monitoring for Input status change for PP3
+    	{
+    		PP3_STATE =  1;
+    	}
+    	if (GPIOPinRead(GPIO_PORTQ_BASE,GPIO_PIN_0))// monitoring for Input status change for PQ0
+    	{
+    		PQ0_STATE =  1;
+    	}
+    	if (GPIOPinRead(GPIO_PORTQ_BASE,GPIO_PIN_1))// monitoring for Input status change for PQ1
+    	{
+    		PQ1_STATE =  1;
+    	}
+    	if (GPIOPinRead(GPIO_PORTQ_BASE,GPIO_PIN_2))// monitoring for Input status change for PQ2
+    	    	{
+    	    		PQ2_STATE =  1;
+    	    	}
+    	if (GPIOPinRead(GPIO_PORTQ_BASE,GPIO_PIN_3))// monitoring for Input status change for PQ3
+    	    	{
+    	    		PQ3_STATE =  1;
+    	    	}
+    	if (GPIOPinRead(GPIO_PORTQ_BASE,GPIO_PIN_4))// monitoring for Input status change for PQ4
+    	    	{
+    	    		PQ4_STATE =  1;
+    	    	}
+    	// Printing the input status as eight digit Binary
+    	UARTprintf("%d%d%d%d%d%d%d%d\n",PB2_STATE,PE0_STATE,PP3_STATE,PQ0_STATE,PQ1_STATE,PQ2_STATE,PQ3_STATE,PQ4_STATE);
+
 
 
       }
