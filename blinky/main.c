@@ -45,7 +45,7 @@ void InitConsole(void){
 
 int main(){
 
-		SysCtlClockSet(SYSCTL_SYSDIV_2_5|SYSCTL_USE_PLL|SYSCTL_OSC_MAIN|SYSCTL_XTAL_16MHZ);
+		SysCtlClockSet(SYSCTL_SYSDIV_2_5|SYSCTL_USE_PLL|SYSCTL_OSC_MAIN|SYSCTL_XTAL_16MHZ); //Initialize the clock
 		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF); // Enables PORT F
 		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOH); // Enables PORT H
 		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOM); // Enables PORT M
