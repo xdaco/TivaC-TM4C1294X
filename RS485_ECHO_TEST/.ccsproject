@@ -8,6 +8,6 @@
 	<isElfFormat value="true"/>
 	<rts value="libc.a"/>
 	<createSlaveProjects value=""/>
-	<origin value="C:/Users/Musarraf/Desktop/RS485_ECHO_TEST"/>
+	<origin value="C:/Users/Musarraf/Documents/My-Ext-Drive2/uart_echo"/>
 	<isTargetManual value="true"/>
 </projectOptions>
