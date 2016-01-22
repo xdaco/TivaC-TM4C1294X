@@ -79,7 +79,7 @@ ConfigureUARTs(uint32_t uart_no,uint32_t uart_base)
 	UARTClockSourceSet(uart_base, UART_CLOCK_PIOSC); //Setting UART clock source
 	UARTConfigSetExpClk(uart_base, 16000000, 115200, (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE | UART_CONFIG_PAR_NONE)); // Setting UART baud rate and data transmission type as 8N1
 	UARTEnable(uart_base); // Finally Enabling required UART base
-	UARTprintf(" RS485 on UARTconfiguration done\n"); // Final confirmation  foor uart config
+	UARTprintf(" RS485 on UARTconfiguration done\n"); // Final confirmation  for uart config
 }
 
 ///*************************************************************************************
