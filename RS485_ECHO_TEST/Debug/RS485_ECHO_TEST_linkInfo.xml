@@ -2,7 +2,7 @@
 <link_info>
    <banner>TI ARM Linker PC v5.2.5</banner>
    <copyright>Copyright (c) 1996-2015 Texas Instruments Incorporated</copyright>
-   <link_time>0x569fb02c</link_time>
+   <link_time>0x56a20e97</link_time>
    <link_errors>0x0</link_errors>
    <output_file>RS485_ECHO_TEST.out</output_file>
    <entry_point>
