@@ -1,6 +1,8 @@
 //*****************************************************************************
-// The GPIO read (INPUT)  example
-//
+// The GPIO read (INPUT)  example. This piece of code reads digital input from 
+// PB2,PE0,PP3,PQ0,PQ1,PQ2,PQ3,PQ4 and prints their status on UART7. Also when any of
+// this pins are high, a respective GPIO is also made high for an LED indications.
+// These LEDs are connected on PF1,PF2,PF3,PH1,PH2,PM1,PL4 and PL5.
 //*****************************************************************************
 
 //**************All Include file goes here ************************************//
@@ -45,7 +47,7 @@ void InitConsole(void){
 
 int main(){
 
-		SysCtlClockSet(SYSCTL_SYSDIV_2_5|SYSCTL_USE_PLL|SYSCTL_OSC_MAIN|SYSCTL_XTAL_16MHZ);
+		SysCtlClockSet(SYSCTL_SYSDIV_2_5|SYSCTL_USE_PLL|SYSCTL_OSC_MAIN|SYSCTL_XTAL_16MHZ); //Initialize the clock
 		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB); // Enables PORT B
 		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE); // Enables PORT E
 		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF); // Enables PORT F
