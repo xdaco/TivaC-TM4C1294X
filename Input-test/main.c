@@ -83,7 +83,7 @@ int main(){
 //		}
     while(1){
 
-    	uint32_t PB2_STATE =  0;
+       	uint32_t PB2_STATE =  0;
     	uint32_t PE0_STATE =  0;
     	uint32_t PP3_STATE =  0;
     	uint32_t PQ0_STATE =  0;
@@ -91,40 +91,88 @@ int main(){
     	uint32_t PQ2_STATE =  0;
     	uint32_t PQ3_STATE =  0;
     	uint32_t PQ4_STATE =  0;
+    	
 
     	if (GPIOPinRead(GPIO_PORTB_BASE,GPIO_PIN_2)) // monitoring for Input status change for PB2
     	{
     		PB2_STATE =  1;
+    		GPIOPinWrite(GPIO_PORTF_AHB_BASE,GPIO_PIN_1, GPIO_PIN_1); //Making PF1 High for LED indication
+       	}
+       	else 
+       	{
+    		PB2_STATE = 0;
+    		GPIOPinWrite(GPIO_PORTF_AHB_BASE,GPIO_PIN_1, ~GPIO_PIN_1); //Making PF1 Low
     	}
-
     	if (GPIOPinRead(GPIO_PORTE_BASE,GPIO_PIN_0))// monitoring for Input status change for PE0
     	{
     		PE0_STATE =  1;
+    		GPIOPinWrite(GPIO_PORTF_AHB_BASE,GPIO_PIN_2, GPIO_PIN_2); //Making PF2 High for LED indication
+    	}
+    	else
+    	{
+    		PE0_STATE = 0;
+    		GPIOPinWrite(GPIO_PORTF_AHB_BASE,GPIO_PIN_2, ~GPIO_PIN_2); //Making PF2 Low
     	}
     	if (GPIOPinRead(GPIO_PORTP_BASE,GPIO_PIN_3))// monitoring for Input status change for PP3
     	{
     		PP3_STATE =  1;
+    		GPIOPinWrite(GPIO_PORTF_AHB_BASE,GPIO_PIN_3, GPIO_PIN_3); //Making PF3 High for LED indication
+    	}
+    	else
+    	{
+    		PP3_STATE = 0;
+    		GPIOPinWrite(GPIO_PORTF_AHB_BASE,GPIO_PIN_3, ~GPIO_PIN_3); //Making PF3 Low
     	}
     	if (GPIOPinRead(GPIO_PORTQ_BASE,GPIO_PIN_0))// monitoring for Input status change for PQ0
     	{
     		PQ0_STATE =  1;
+    		GPIOPinWrite(GPIO_PORTH_AHB_BASE,GPIO_PIN_1, GPIO_PIN_1); //Making PH1 High for LED indication
+    	}
+    	else
+    	{
+    		PQ0_STATE = 0;
+    		GPIOPinWrite(GPIO_PORTH_AHB_BASE,GPIO_PIN_1, ~GPIO_PIN_1); //Making PH1 Low
     	}
     	if (GPIOPinRead(GPIO_PORTQ_BASE,GPIO_PIN_1))// monitoring for Input status change for PQ1
     	{
     		PQ1_STATE =  1;
+    		GPIOPinWrite(GPIO_PORTH_AHB_BASE,GPIO_PIN_2, GPIO_PIN_2); //Making PH2 High for LED indication
+    	}
+    	else
+    	{
+    		PQ1_STATE = 0;
+    		GPIOPinWrite(GPIO_PORTH_AHB_BASE,GPIO_PIN_2, ~GPIO_PIN_2); //Making PH2 Low
     	}
     	if (GPIOPinRead(GPIO_PORTQ_BASE,GPIO_PIN_2))// monitoring for Input status change for PQ2
     	    	{
     	    		PQ2_STATE =  1;
+    	    		GPIOPinWrite(GPIO_PORTM_BASE, GPIO_PIN_1, GPIO_PIN_1); //Making PM1 High for LED indication
     	    	}
+    	else
+    	{
+    		PQ2_STATE = 0;
+    		GPIOPinWrite(GPIO_PORTM_BASE, GPIO_PIN_1, ~GPIO_PIN_1); //Making PM1 Low
+    	}
     	if (GPIOPinRead(GPIO_PORTQ_BASE,GPIO_PIN_3))// monitoring for Input status change for PQ3
     	    	{
     	    		PQ3_STATE =  1;
+    	    		GPIOPinWrite(GPIO_PORTL_BASE, GPIO_PIN_4, GPIO_PIN_4); //Making PL4 High for LED indication
     	    	}
+    	else 
+    	{
+    		PQ3_STATE = 0;
+    		GPIOPinWrite(GPIO_PORTL_BASE, GPIO_PIN_4, ~GPIO_PIN_4); //Making PL4 Low
+    	}
     	if (GPIOPinRead(GPIO_PORTQ_BASE,GPIO_PIN_4))// monitoring for Input status change for PQ4
     	    	{
     	    		PQ4_STATE =  1;
-    	    	}
+    			GPIOPinWrite(GPIO_PORTL_BASE, GPIO_PIN_5, GPIO_PIN_5); //Making PL5 High for LED indication
+    		}
+    	else
+    	{
+    		PQ4_STATE =  0;
+    		GPIOPinWrite(GPIO_PORTL_BASE, GPIO_PIN_5, ~GPIO_PIN_5); //Making PL5 Low
+    	}
     	// Printing the input status as eight digit Binary
     	UARTprintf("%d%d%d%d%d%d%d%d\n",PB2_STATE,PE0_STATE,PP3_STATE,PQ0_STATE,PQ1_STATE,PQ2_STATE,PQ3_STATE,PQ4_STATE);
 
