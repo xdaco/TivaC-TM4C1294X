@@ -48,14 +48,28 @@ int main(){
 		SysCtlClockSet(SYSCTL_SYSDIV_2_5|SYSCTL_USE_PLL|SYSCTL_OSC_MAIN|SYSCTL_XTAL_16MHZ);
 		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB); // Enables PORT B
 		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE); // Enables PORT E
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF); // Enables PORT F
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOH); // Enables PORT H
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOL); // Enables PORT L
+		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOM); // Enables PORT M
 		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOP); // Enables PORT P
 		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOQ); // Enables PORT Q
-		SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOM); // Enables PORT M
-		GPIOPinTypeGPIOOutput(GPIO_PORTM_BASE, 0x02); // PM1 is set as output
+		
+	//****************************Setting Input Pins**************************************//
+	
 		GPIOPinTypeGPIOInput(GPIO_PORTB_BASE,  GPIO_PIN_2); // PB2 is set as input. By this method you can assign one pin at a time
 		GPIOPinTypeGPIOInput(GPIO_PORTE_BASE, 0x01); //PE0 set as Input
 		GPIOPinTypeGPIOInput(GPIO_PORTQ_BASE, 0x1F); //PQ0,PQ1,PQ2,PQ3,PQ4 are set as Input
-		GPIOPinTypeGPIOInput(GPIO_PORTP_BASE, 0x08);
+		GPIOPinTypeGPIOInput(GPIO_PORTP_BASE, 0x08);//PP3 set as Input
+		
+	//****************************Setting Output Pins**************************************//
+	
+		GPIOPinTypeGPIOOutput(GPIO_PORTF_AHB_BASE, 0x0E); //PF1 , PF2, PF3 are set as Output
+		GPIOPinTypeGPIOOutput(GPIO_PORTH_AHB_BASE, 0x06); //PH1, PH2 are set as output
+		GPIOPinTypeGPIOOutput(GPIO_PORTM_BASE, 0x02); // PM1 is set as output
+		GPIOPinTypeGPIOOutput(GPIO_PORTL_BASE, 0x30); // PL4,PL5 are set as output
+		GPIOPadConfigSet(GPIO_PORTF_AHB_BASE, 0x0E, GPIO_STRENGTH_8MA, GPIO_PIN_TYPE_STD); // Requires only for PORT H & F
+		GPIOPadConfigSet(GPIO_PORTH_AHB_BASE, 0x06, GPIO_STRENGTH_8MA, GPIO_PIN_TYPE_STD); // Requires only for PORT H & F
 		InitConsole(); // Calls the UART debug config funtion
 		UARTprintf("Input tests for TM4C1294X\n"); // General print for the code information.
 
